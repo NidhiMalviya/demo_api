@@ -1,0 +1,45 @@
+
+<html>
+    <head>
+    <title>json</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    </head>
+    <body>
+        <div class="container">
+            <div class="table_responsive">
+            <h1>Json data</h1>
+            <br>
+        </div>
+        <table class="table table_borderd table_striped" id="user_table">
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Text</th>
+                <th>created_at</th>
+                <th>updated_at</th>
+            </tr>
+        </table>
+        </div>
+    </body>
+    </html>
+    
+    <script>
+    $(document).ready(function(){
+        $.getJSON("http://localhost:3000/posts/1", function(data){
+            var user_data = "";
+            debugger
+            $.each(data,function(key,value){
+                user_data += '<tr>';
+                user_data += '<td>'+value.id+'<td>';
+                user_data += '<td>'+value.title+'<td>';
+                user_data += '<td>'+value.text+'<td>';
+                user_data += '<td>'+value.created_at+'<td>';
+                user_data += '<td>'+value.updated_at+'<td>';
+                user_data += '<tr>';
+            });
+            $('#user_table').append(user_data);
+        });
+    });
+    </script>
+    

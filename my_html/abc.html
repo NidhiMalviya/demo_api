@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<script>
+
+fetch("http://localhost:3000/posts/").then(
+  res => {
+    res.json().then(
+        post_params => {
+        console.log(post_params.post_params);
+        if (post.post.length > 0) {
+
+          var temp = "";
+          post_params.post_params.forEach((itemData) => {
+            temp += "<tr>";
+            temp += "<td>" + itemData.id + "</td>";
+            temp += "<td>" + itemData.title + "</td>";
+            temp += "<td>" + itemData.text + "</td></tr>";
+          });
+          document.getElementById('data').innerHTML = temp;
+        }
+      }
+    )
+  }
+)
+</script>
+<body>
+<div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Employee Name</th>
+          <th>Salary</th>
+        </tr>
+      </thead>
+      <tbody id="data">
+  
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
